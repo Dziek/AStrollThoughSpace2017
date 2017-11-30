@@ -6,6 +6,8 @@ public class SpawnTimer : MonoBehaviour {
 	public float minSpawnTime = 2;
 	public float maxSpawnTime = 4;
 	
+	public bool skipFirstWait;
+	
 	private Spawner spawnerScript;
 	
 	private float objectSpawnInterval;
@@ -15,6 +17,11 @@ public class SpawnTimer : MonoBehaviour {
 		
 		objectSpawnInterval = Random.Range(minSpawnTime/2,maxSpawnTime/2);
 		// objectSpawnInterval = 10;
+		
+		if (skipFirstWait == true)
+		{
+			objectSpawnInterval = 0;
+		}
 		
 		StartCoroutine("ObjectSpawnerTimer");
 	}
@@ -43,4 +50,11 @@ public class SpawnTimer : MonoBehaviour {
 
 	}
 	
+	void OnEnable () {
+		Messenger.AddListener("GameOver", StopSpawning);
+	}
+	
+	void OnDisable () {
+		Messenger.RemoveListener("GameOver", StopSpawning);
+	}
 }

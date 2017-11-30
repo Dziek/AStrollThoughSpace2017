@@ -7,7 +7,10 @@ public class PlayerControl : MonoBehaviour {
 	public float scaleUpRate = 1.1f;
 	public float scaleDownRate = 0.9f;
 	
+	public GameObject childSpriteMask;
 	public GameObject otherSpriteMask;
+	
+	private bool isDead;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,8 @@ public class PlayerControl : MonoBehaviour {
 		
 		if (transform.localScale.x <= 0.05f)
 		{
+			otherSpriteMask.SetActive(false);
+			Debug.Log("Shrink Death");
 			Dead();
 		}
 	}
@@ -32,11 +37,15 @@ public class PlayerControl : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D other) {
 		if (other.gameObject.tag == "Border")
 		{
+			otherSpriteMask.SetActive(false);
+			Debug.Log("Border Death");
 			Dead();
 		}
 		
 		if (other.gameObject.tag == "Wall")
 		{
+			otherSpriteMask.SetActive(false);
+			Debug.Log("Wall Death");
 			Dead();
 		}
 		
@@ -44,14 +53,27 @@ public class PlayerControl : MonoBehaviour {
 		{
 			if (transform.localScale.y < other.gameObject.transform.localScale.y)
 			{
+				otherSpriteMask.transform.SetParent(other.transform);
+				childSpriteMask.transform.SetParent(other.transform);
+				
+				childSpriteMask.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y + 1);
+				
+				Debug.Log("Swallow Death");
 				Dead();
 			}
 		}
 	}
 	
 	void Dead () {
-		Debug.Log("OVER");
-		otherSpriteMask.SetActive(false);
-		gameObject.SetActive(false);
+		
+		if (isDead == false)
+		{
+			Debug.Log("OVER");
+			// otherSpriteMask.SetActive(false);
+			gameObject.SetActive(false);
+			isDead = true;
+			
+			Messenger.Broadcast("GameOver");
+		}
 	}
 }
