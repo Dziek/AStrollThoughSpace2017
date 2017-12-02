@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject childSpriteMask;
 	public GameObject otherSpriteMask;
 	
+	public GameObject midWallDeathGO;
+	
 	private bool isDead;
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class PlayerControl : MonoBehaviour {
 		if (transform.localScale.x <= 0.05f)
 		{
 			otherSpriteMask.SetActive(false);
+			childSpriteMask.SetActive(false);
 			Debug.Log("Shrink Death");
 			Dead();
 		}
@@ -38,6 +41,7 @@ public class PlayerControl : MonoBehaviour {
 		if (other.gameObject.tag == "Border")
 		{
 			otherSpriteMask.SetActive(false);
+			childSpriteMask.SetActive(false);
 			Debug.Log("Border Death");
 			Dead();
 		}
@@ -45,6 +49,7 @@ public class PlayerControl : MonoBehaviour {
 		if (other.gameObject.tag == "Wall")
 		{
 			otherSpriteMask.SetActive(false);
+			childSpriteMask.SetActive(false);
 			Debug.Log("Wall Death");
 			Dead();
 		}
@@ -60,6 +65,10 @@ public class PlayerControl : MonoBehaviour {
 				
 				childSpriteMask.transform.localScale = new Vector2(childSpriteMask.transform.localScale.x, transform.localScale.y + 1);
 				
+				// midWallDeathGO.transform.SetParent(null);
+				// midWallDeathGO.SetActive(true);
+				midWallDeathGO.GetComponent<ParticleSystem>().Play();
+				
 				Debug.Log("Swallow Death");
 				Dead();
 			}
@@ -72,7 +81,11 @@ public class PlayerControl : MonoBehaviour {
 		{
 			Debug.Log("OVER");
 			// otherSpriteMask.SetActive(false);
-			gameObject.SetActive(false);
+			
+			// gameObject.SetActive(false);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			gameObject.GetComponent<Collider2D>().enabled = false;
+			
 			isDead = true;
 			
 			Messenger.Broadcast("GameOver");
