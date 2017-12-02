@@ -287,11 +287,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed:
-    min: 0.1
-    max: 0.5
+    min: 0.2
+    max: 0.4
   width:
     min: 0.5
     max: 5
+  wallYValues:
+    min: 3.2
+    max: 6
+  scaleFactor: 0.8
   wallTopGO: {fileID: 1457358564195000}
   wallMiddleGO: {fileID: 1654154976025132}
   wallBottomGO: {fileID: 1364205605237804}
