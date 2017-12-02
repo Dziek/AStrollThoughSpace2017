@@ -53,10 +53,12 @@ public class PlayerControl : MonoBehaviour {
 		{
 			if (transform.localScale.y < other.gameObject.transform.localScale.y)
 			{
+				// Debug.Break();
+				
 				otherSpriteMask.transform.SetParent(other.transform);
 				childSpriteMask.transform.SetParent(other.transform);
 				
-				childSpriteMask.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y + 1);
+				childSpriteMask.transform.localScale = new Vector2(childSpriteMask.transform.localScale.x, transform.localScale.y + 1);
 				
 				Debug.Log("Swallow Death");
 				Dead();
@@ -74,6 +76,8 @@ public class PlayerControl : MonoBehaviour {
 			isDead = true;
 			
 			Messenger.Broadcast("GameOver");
+			
+			// Debug.Break();
 		}
 	}
 }

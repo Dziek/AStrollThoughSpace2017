@@ -292,6 +292,9 @@ MonoBehaviour:
   width:
     min: 0.5
     max: 5
+  wallTopGO: {fileID: 1457358564195000}
+  wallMiddleGO: {fileID: 1654154976025132}
+  wallBottomGO: {fileID: 1364205605237804}
 --- !u!212 &212073678472254938
 SpriteRenderer:
   m_ObjectHideFlags: 1
