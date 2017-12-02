@@ -84,7 +84,8 @@ public class PlayerControl : MonoBehaviour {
 			
 			// gameObject.SetActive(false);
 			gameObject.GetComponent<SpriteRenderer>().enabled = false;
-			gameObject.GetComponent<Collider2D>().enabled = false;
+			gameObject.GetComponentsInChild<Collider2D>()[0].enabled = false;
+			gameObject.GetComponentsInChild<Collider2D>()[1].enabled = false;
 			
 			isDead = true;
 			
