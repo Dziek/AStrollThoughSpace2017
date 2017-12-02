@@ -203,7 +203,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317018886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpawnTime: 2
-  maxSpawnTime: 4
+  maxSpawnTime: 3
   skipFirstWait: 1
 --- !u!114 &1313694598
 MonoBehaviour:
@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647986175}
   - component: {fileID: 1647986176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
