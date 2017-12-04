@@ -10,7 +10,7 @@ public class GalaxyParticleSystem : MonoBehaviour {
 	
     void Awake () {
 		starSystem = GetComponent<ParticleSystem>();
-		SpeedUpField();
+		// SpeedUpField();
     }
 	
 	void SpeedUpField () {
@@ -27,12 +27,12 @@ public class GalaxyParticleSystem : MonoBehaviour {
 	}
 	
 	void OnEnable () {
-		// Messenger.AddListener("GameStart", SpeedUpField);
+		Messenger.AddListener("GameStart", SpeedUpField);
 		Messenger.AddListener("GameOver", SlowDownField);
 	}
 	
 	void OnDisable () {
-		// Messenger.RemoveListener("GameStart", SpeedUpField);
+		Messenger.RemoveListener("GameStart", SpeedUpField);
 		Messenger.RemoveListener("GameOver", SlowDownField);
 	}
 }

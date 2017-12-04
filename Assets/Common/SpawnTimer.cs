@@ -15,18 +15,26 @@ public class SpawnTimer : MonoBehaviour {
 	void Awake () {
 		spawnerScript = GetComponent<Spawner>();
 		
-		objectSpawnInterval = Random.Range(minSpawnTime/2,maxSpawnTime/2);
+		// objectSpawnInterval = Random.Range(minSpawnTime/2,maxSpawnTime/2);
 		// objectSpawnInterval = 10;
+		
+		// if (skipFirstWait == true)
+		// {
+			// objectSpawnInterval = 0;
+		// }
+		
+		// StartCoroutine("ObjectSpawnerTimer");
+	}
+	
+	public void StartSpawning () {
+		
+		objectSpawnInterval = Random.Range(minSpawnTime/2,maxSpawnTime/2);
 		
 		if (skipFirstWait == true)
 		{
 			objectSpawnInterval = 0;
 		}
 		
-		StartCoroutine("ObjectSpawnerTimer");
-	}
-	
-	public void StartSpawning () {
 		StartCoroutine("ObjectSpawnerTimer");
 	}
 	
@@ -51,10 +59,12 @@ public class SpawnTimer : MonoBehaviour {
 	}
 	
 	void OnEnable () {
+		Messenger.AddListener("GameStart", StartSpawning);
 		Messenger.AddListener("GameOver", StopSpawning);
 	}
 	
 	void OnDisable () {
+		Messenger.RemoveListener("GameStart", StartSpawning);
 		Messenger.RemoveListener("GameOver", StopSpawning);
 	}
 }
