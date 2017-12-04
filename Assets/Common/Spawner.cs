@@ -21,24 +21,24 @@ public class Spawner : MonoBehaviour {
 		o.SetActive(true);
 	}
 	
-	void StartLimbo () {
-		StartCoroutine("WaitForNoObjects");
-	}
+	// void StartLimbo () {
+		// StartCoroutine("WaitForNoObjects");
+	// }
 	
-	IEnumerator WaitForNoObjects () {
-		while (objects.GetNoOfActiveObjects() > 0) 
-		{
-			yield return null;
-		}
+	// IEnumerator WaitForNoObjects () {
+		// while (objects.GetNoOfActiveObjects() > 0) 
+		// {
+			// yield return null;
+		// }
 		
-		Messenger.Broadcast("LimboOver");
-	}
+		// Messenger.Broadcast("LimboOver");
+	// }
 	
-	void OnEnable () {
-		Messenger.AddListener("GameOver", StartLimbo);
-	}
+	// void OnEnable () {
+		// Messenger.AddListener("GameOver", StartLimbo);
+	// }
 	
-	void OnDisable () {
-		Messenger.RemoveListener("GameOver", StartLimbo);
-	}
+	// void OnDisable () {
+		// Messenger.RemoveListener("GameOver", StartLimbo);
+	// }
 }

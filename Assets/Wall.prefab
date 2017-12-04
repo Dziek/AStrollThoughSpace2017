@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4482355232597352}
   - component: {fileID: 212073678472254938}
   - component: {fileID: 61541062741266546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallDown
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4310333952236086}
   - component: {fileID: 212905074092638318}
   - component: {fileID: 61899788054811778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallUp
   m_TagString: Wall
   m_Icon: {fileID: 0}
