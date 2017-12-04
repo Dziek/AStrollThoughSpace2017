@@ -29,11 +29,11 @@ public class OffScreenJudge : MonoBehaviour {
 	IEnumerator WaitForNoObjects () {
 		while (noOfWalls > 0) 
 		{
-			Debug.Log(noOfWalls);
+			// Debug.Log(noOfWalls);
 			yield return null;
 		}
 		
-		Debug.Log(noOfWalls + " better be equal to 0");
+		// Debug.Log(noOfWalls + " better be equal to 0");
 		Messenger.Broadcast("LimboOver");
 	}
 	
