@@ -20,4 +20,25 @@ public class Spawner : MonoBehaviour {
 		o.transform.position = transform.position;
 		o.SetActive(true);
 	}
+	
+	void StartLimbo () {
+		StartCoroutine("WaitForNoObjects");
+	}
+	
+	IEnumerator WaitForNoObjects () {
+		while (objects.GetNoOfActiveObjects() > 0) 
+		{
+			yield return null;
+		}
+		
+		Messenger.Broadcast("LimboOver");
+	}
+	
+	void OnEnable () {
+		Messenger.AddListener("GameOver", StartLimbo);
+	}
+	
+	void OnDisable () {
+		Messenger.RemoveListener("GameOver", StartLimbo);
+	}
 }
