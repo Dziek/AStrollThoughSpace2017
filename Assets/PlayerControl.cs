@@ -75,6 +75,8 @@ public class PlayerControl : MonoBehaviour {
 				// midWallDeathGO.SetActive(true);
 				midWallDeathGO.GetComponent<ParticleSystem>().Play();
 				
+				other.GetComponent<SpriteRenderer>().enabled = false;
+				
 				Debug.Log("Swallow Death");
 				Dead();
 			}

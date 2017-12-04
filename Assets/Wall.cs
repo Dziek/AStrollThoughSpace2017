@@ -38,6 +38,8 @@ public class Wall : MonoBehaviour {
 		
 		wallMiddleGO.transform.localScale = new Vector2(wallMiddleGO.transform.localScale.x, scaleValue);
 		
+		wallMiddleGO.GetComponent<SpriteRenderer>().enabled = true;
+		
 		// float translateValue = Random.Range(0, 1.5f);
 		// float translateValue = 1;
 		
