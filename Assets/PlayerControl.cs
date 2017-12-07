@@ -83,6 +83,20 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 	
+	void OnTriggerExit2D (Collider2D other) {
+		if (other.gameObject.tag == "WallMiddle")
+		{
+			if (transform.localScale.y > other.gameObject.transform.localScale.y)
+			{
+				if (isDead == false)
+				{
+					// Debug.Log("ScoreUP");
+					Messenger.Broadcast("ScoreUp");
+				}
+			}
+		}
+	}
+	
 	void Dead () {
 		
 		if (isDead == false)
