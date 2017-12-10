@@ -27,7 +27,7 @@ public class Score : MonoBehaviour {
 			highScore = currentScore;
 		}
 		
-		scoreText.text = "Score: " + currentScore.ToString();
+		scoreText.text = "LAST: " + currentScore.ToString();
 		Messenger<int>.Broadcast("FinalScore", currentScore);
 	}
 	

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TestingMenu : MonoBehaviour {
 
-	public static bool testVar0 = false;
+	public static bool testVar0 = true;
 	
 	public void ChangeTestVar0 (Button button) {
 		testVar0 = !testVar0;
