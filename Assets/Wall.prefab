@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed:
-    min: 0.2
-    max: 0.4
+    min: 8
+    max: 10
   width:
     min: 0.5
     max: 5

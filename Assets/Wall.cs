@@ -22,6 +22,8 @@ public class Wall : MonoBehaviour {
 	
 	private float currentSpeed;
 	
+	private float deathSlowDown = 2; // divides currentSpeed by this on GameOver 
+	
 	void OnEnable () {
 		currentSpeed = Random.Range(speed.min, speed.max);
 		
@@ -63,10 +65,27 @@ public class Wall : MonoBehaviour {
 		// }
 		
 		// wallMiddleGO.transform.localScale = new Vector2(wallMiddleGO.transform.localScale.x, wallMiddleGO.transform.localScale.y * midScaleValue);
+		
+		EnableMessenger();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(transform.right * -currentSpeed);
+		transform.Translate(transform.right * -currentSpeed * Time.deltaTime);
+	}
+	
+	void SlowDown () {
+		
+		// currentSpeed = currentSpeed / deathSlowDown;
+	}
+	
+	void EnableMessenger () {
+		// Messenger.AddListener("GameStart", SpeedUpField);
+		Messenger.AddListener("GameOver", SlowDown);
+	}
+	
+	void OnDisable () {
+		// Messenger.RemoveListener("GameStart", SpeedUpField);
+		Messenger.RemoveListener("GameOver", SlowDown);
 	}
 }

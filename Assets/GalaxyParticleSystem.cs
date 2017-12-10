@@ -13,6 +13,20 @@ public class GalaxyParticleSystem : MonoBehaviour {
 		// SpeedUpField();
     }
 	
+	// void Update () {
+		// if (Input.GetKey("a"))
+		// {
+			// var main = starSystem.main;
+			// main.simulationSpeed -= 0.05f * Time.deltaTime;
+		// }
+		
+		// if (Input.GetKey("d"))
+		// {
+			// var main = starSystem.main;
+			// main.simulationSpeed += 0.05f * Time.deltaTime;
+		// }
+	// }
+	
 	void SpeedUpField () {
 		var main = starSystem.main;
         main.simulationSpeed += starVelocityMultiplier;

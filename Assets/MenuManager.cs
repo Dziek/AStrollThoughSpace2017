@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour {
 	
 	public GameObject mainMenuGO;
 	public GameObject gameOverGO;
+	public GameObject inventoryGO;
 	
 	void ClearMenu () {
 		mainMenuGO.SetActive(false);
@@ -19,6 +20,14 @@ public class MenuManager : MonoBehaviour {
 	public void LoadMainMenu () {
 		mainMenuGO.SetActive(true);
 		gameOverGO.SetActive(false);
+		inventoryGO.SetActive(false);
+		
+		StoryManager.storyTrack = "Main";
+	}
+	
+	public void LoadInventory () {
+		inventoryGO.SetActive(true);
+		mainMenuGO.SetActive(false);
 	}
 	
 	void OnEnable () {

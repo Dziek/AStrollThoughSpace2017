@@ -11,4 +11,10 @@ public class GameManager : MonoBehaviour {
 		
 		// playerGO.Set
 	}
+	
+	public void ChangeTrackStartGame () {
+		StoryManager.storyTrack = "Side";
+		
+		Messenger.Broadcast("GameStart");
+	}
 }

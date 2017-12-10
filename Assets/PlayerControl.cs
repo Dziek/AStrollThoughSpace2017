@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
-	public float scaleUpRate = 1.1f;
-	public float scaleDownRate = 0.9f;
+	public float scaleUpRate = 1.1f; // 1.08f;
+	public float scaleDownRate = 0.9f; // 1.94f;
 	
 	public GameObject childSpriteMask;
 	public GameObject otherSpriteMask;
@@ -15,6 +15,15 @@ public class PlayerControl : MonoBehaviour {
 	private bool isDead;
 	
 	private Vector2 startingScale;
+	
+	//T
+	
+	private float maxSize = 4;
+	
+	private Range size = new Range(0.1f, 8);
+	// private Range scaleUp = new Range(2.5f, 4.5f);
+	private Range scaleUp = new Range(0, 4.5f);
+	private Range scaleDown = new Range(1.5f, 3);
 
 	// Use this for initialization
 	void Start () {
@@ -28,9 +37,47 @@ public class PlayerControl : MonoBehaviour {
 		{
 			if (Input.GetMouseButton(0) || Input.GetKey("space"))
 			{
-				transform.localScale = new Vector2(transform.localScale.x * scaleUpRate, transform.localScale.y * scaleUpRate);
+				
+				if (TestingMenu.testVar0 == true)
+				{
+					//LOTSALERPS
+					float parameter = 1 - Mathf.InverseLerp(size.min, size.max, transform.localScale.x);
+					float scaleRate = Mathf.Lerp(scaleUp.min, scaleUp.max, parameter) * transform.localScale.x * Time.deltaTime;
+					
+					transform.localScale = new Vector2(transform.localScale.x + scaleRate, transform.localScale.y + scaleRate);
+				}else{
+					// ORIGINAL
+					transform.localScale = new Vector2(transform.localScale.x * scaleUpRate, transform.localScale.y * scaleUpRate);
+				}
+				
+				
+				//ORIGINAL
+				// transform.localScale = new Vector2(transform.localScale.x * scaleUpRate, transform.localScale.y * scaleUpRate);
+				
+				//CAPS SIZE
+				// float scaleRate = scaleUpRate * (maxSize - transform.localScale.x) * Time.deltaTime;
+				// float scaleRate = scaleUpRate * transform.localScale.x * Time.deltaTime;
+				
+				//LOTSALERPS
+				// float parameter = 1 - Mathf.InverseLerp(size.min, size.max, transform.localScale.x);
+				// float scaleRate = Mathf.Lerp(scaleUp.min, scaleUp.max, parameter) * transform.localScale.x * Time.deltaTime;
+				
+				// transform.localScale = new Vector2(transform.localScale.x + scaleRate, transform.localScale.y + scaleRate);
 			}else{
-				transform.localScale = new Vector2(transform.localScale.x * scaleDownRate, transform.localScale.y * scaleDownRate);
+				if (TestingMenu.testVar0 == true)
+				{
+					//LOTSALERPS
+					float parameter = 1 - Mathf.InverseLerp(size.min, size.max, transform.localScale.x);
+					float scaleRate = Mathf.Lerp(scaleDown.min, scaleDown.max, parameter) * transform.localScale.x * Time.deltaTime;
+					
+					transform.localScale = new Vector2(transform.localScale.x - scaleRate, transform.localScale.y - scaleRate);
+				}else{
+					// ORIGINAL
+					transform.localScale = new Vector2(transform.localScale.x * scaleDownRate, transform.localScale.y * scaleDownRate);
+				}
+				
+				// // ORIGINAL
+				// transform.localScale = new Vector2(transform.localScale.x * scaleDownRate, transform.localScale.y * scaleDownRate);
 			}
 			
 			if (transform.localScale.x <= 0.05f)

@@ -7,9 +7,9 @@ public class Score : MonoBehaviour {
 	
 	public Text scoreText;
 	
-	private float currentScore;
-	private float lastScore;
-	private float highScore;
+	private int currentScore;
+	private int lastScore;
+	private int highScore;
 	
 	void GameStart () {
 		currentScore = 0;
@@ -28,6 +28,7 @@ public class Score : MonoBehaviour {
 		}
 		
 		scoreText.text = "Score: " + currentScore.ToString();
+		Messenger<int>.Broadcast("FinalScore", currentScore);
 	}
 	
 	void OnEnable () {
