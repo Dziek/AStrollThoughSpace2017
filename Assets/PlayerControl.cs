@@ -11,6 +11,9 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject otherSpriteMask;
 	
 	public GameObject midWallDeathGO;
+	public ParticleSystem shrinkGO;
+	public ParticleSystem wallDeathGO;
+	public ParticleSystem wallNibDeathGO;
 	
 	private bool isDead;
 	
@@ -18,7 +21,9 @@ public class PlayerControl : MonoBehaviour {
 	
 	//T
 	
-	private float maxSize = 4;
+	// private float maxSize = 4;
+	
+	public bool touchingNib;
 	
 	private Range size = new Range(0.1f, 8);
 	// private Range scaleUp = new Range(2.5f, 4.5f);
@@ -85,12 +90,13 @@ public class PlayerControl : MonoBehaviour {
 				// otherSpriteMask.SetActive(false);
 				// childSpriteMask.SetActive(false);
 				Debug.Log("Shrink Death");
+				shrinkGO.Play();
 				Dead();
 			}
 		}
 	}
 	
-	void OnTriggerStay2D (Collider2D other) {
+	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.tag == "Border")
 		{
 			// otherSpriteMask.SetActive(false);
@@ -104,8 +110,25 @@ public class PlayerControl : MonoBehaviour {
 			// otherSpriteMask.SetActive(false);
 			// childSpriteMask.SetActive(false);
 			Debug.Log("Wall Death");
+			
+			var sh = wallDeathGO.shape;
+			sh.scale = transform.localScale;
+			
+			var shn = wallNibDeathGO.shape;
+			shn.scale = transform.localScale;
+			
+			if (touchingNib == true)
+			{
+				wallNibDeathGO.Play();
+			}else{
+				wallDeathGO.Play();
+			}
+			
 			Dead();
 		}
+	}
+	
+	void OnTriggerStay2D (Collider2D other) {
 		
 		if (other.gameObject.tag == "WallMiddle")
 		{
@@ -127,6 +150,8 @@ public class PlayerControl : MonoBehaviour {
 				Debug.Log("Swallow Death");
 				Dead();
 			}
+			
+			touchingNib = true;
 		}
 	}
 	
@@ -141,6 +166,8 @@ public class PlayerControl : MonoBehaviour {
 					Messenger.Broadcast("ScoreUp");
 				}
 			}
+			
+			touchingNib = false;
 		}
 	}
 	
