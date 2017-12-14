@@ -10050,7 +10050,6 @@ MonoBehaviour:
   wallNibDeathGO: {fileID: 527846357}
   swallowSystem: {fileID: 2101262150}
   nibCrumbs: {fileID: 1004377810}
-  touchingNib: 0
 --- !u!50 &317018891
 Rigidbody2D:
   serializedVersion: 4
@@ -18511,7 +18510,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 652646562
+  randomSeed: 1470032979
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19071,7 +19070,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -19150,8 +19149,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 0
-    m_Bursts: []
+    m_BurstCount: 1
+    m_Bursts:
+    - time: 0
+      minCount: 50
+      maxCount: 100
+      cycleCount: 1
+      repeatInterval: 0.01
   SizeModule:
     enabled: 0
     curve:
@@ -35156,7 +35160,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1274255945
+  randomSeed: -1423892608
   InitialModule:
     serializedVersion: 3
     enabled: 1
