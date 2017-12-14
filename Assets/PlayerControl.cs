@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour {
 	public ParticleSystem wallDeathGO;
 	public ParticleSystem wallNibDeathGO;
 	public ParticleSystem swallowSystem;
+	public ParticleSystem nibCrumbs;
 	
 	private bool isDead;
 	
@@ -34,7 +35,7 @@ public class PlayerControl : MonoBehaviour {
 	
 	// private float maxSize = 4;
 	
-	public bool touchingNib;
+	private bool touchingNib = false;
 	
 	private Range size = new Range(0.1f, 8);
 	// private Range scaleUp = new Range(2.5f, 4.5f);
@@ -96,6 +97,14 @@ public class PlayerControl : MonoBehaviour {
 				
 				// // ORIGINAL
 				// transform.localScale = new Vector2(transform.localScale.x * scaleDownRate, transform.localScale.y * scaleDownRate);
+			}
+			
+			if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
+			{
+				if (touchingNib == true)
+				{
+					nibCrumbs.Play();
+				}
 			}
 			
 			if (transform.localScale.x <= 0.05f)
@@ -251,6 +260,7 @@ public class PlayerControl : MonoBehaviour {
 		// gameObject.GetComponentsInChildren<Collider2D>()[1].enabled = true;
 		
 		isDead = false;
+		touchingNib = false;
 		
 		transform.localScale = startingScale;
 	}
