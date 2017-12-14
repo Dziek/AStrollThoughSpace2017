@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour {
 	public ParticleSystem shrinkGO;
 	public ParticleSystem wallDeathGO;
 	public ParticleSystem wallNibDeathGO;
+	public ParticleSystem swallowSystem;
 	
 	private bool isDead;
 	
@@ -146,6 +147,7 @@ public class PlayerControl : MonoBehaviour {
 		if (other.gameObject.tag == "WallMiddle")
 		{
 			lastTouchedNib = other.transform;
+			swallowSystem.Play();
 		}
 	}
 	
@@ -191,10 +193,11 @@ public class PlayerControl : MonoBehaviour {
 			touchingNib = false;
 		}
 		
-		// if (other.gameObject.tag == "WallMiddle")
-		// {
+		if (other.gameObject.tag == "WallMiddle")
+		{
 			// touchedNib = null;
-		// }
+			swallowSystem.Stop();
+		}
 	}
 	
 	void MaskNib () {
