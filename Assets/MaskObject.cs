@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaskScript : MonoBehaviour {
+public class MaskObject : MonoBehaviour {
 	
 	private Transform startParent;
 	private Vector2 startPos;
 	private Vector2 startScale;
 	
 	private SpriteMask mask;
+	
+	private bool following;
 	
 	void Awake () {
 		startParent = transform.parent;
@@ -21,11 +23,23 @@ public class MaskScript : MonoBehaviour {
 	void OnStart () {
 		mask.enabled = true;
 		
+		transform.SetParent(startParent);
 		transform.localScale = startScale;
+		transform.position = startPos;
+		
+		Debug.Log("OnStart MASK " + transform.parent);
 	}
 	
 	void OnEnd () {
-		mask.enabled = false;
+		if (following == false)
+		{
+			mask.enabled = false;
+		}
+	}
+	
+	public void Follow (Transform toFollow) {
+		transform.SetParent(toFollow);
+		following = true;
 	}
 	
 	void OnEnable () {
@@ -37,4 +51,6 @@ public class MaskScript : MonoBehaviour {
 		Messenger.RemoveListener("GameStart", OnStart);
 		Messenger.RemoveListener("GameOver", OnEnd);
 	}
+	
+	
 }

@@ -4371,7 +4371,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 116839964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 559b54072bb85b044817e3b0f90c494c, type: 3}
   m_Name: 
@@ -9205,7 +9205,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 220883367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -10043,6 +10043,7 @@ MonoBehaviour:
   scaleDownRate: 0.94
   childSpriteMask: {fileID: 116839964}
   otherSpriteMask: {fileID: 1710170405}
+  maskManager: {fileID: 1164611284}
   midWallDeathGO: {fileID: 151803930}
   shrinkGO: {fileID: 96079685}
   wallDeathGO: {fileID: 1340873163}
@@ -19382,6 +19383,7 @@ GameObject:
   - component: {fileID: 1164611281}
   - component: {fileID: 1164611283}
   - component: {fileID: 1164611282}
+  - component: {fileID: 1164611284}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -19465,6 +19467,19 @@ MonoBehaviour:
   flavourText: {fileID: 337837307}
   continueButton: {fileID: 2053896555}
   inventoryButton: {fileID: 220883369}
+--- !u!114 &1164611284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164611277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b55eaff70b18d7459b1076c0caab55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childSpriteMask: {fileID: 116839964}
+  otherSpriteMask: {fileID: 1710170405}
 --- !u!1 &1168330388
 GameObject:
   m_ObjectHideFlags: 0
@@ -25841,7 +25856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1647986175
 Transform:
   m_ObjectHideFlags: 0
@@ -26446,7 +26461,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1710170405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 559b54072bb85b044817e3b0f90c494c, type: 3}
   m_Name: 
@@ -28028,7 +28043,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -507575194
+  randomSeed: -181102316
   InitialModule:
     serializedVersion: 3
     enabled: 1

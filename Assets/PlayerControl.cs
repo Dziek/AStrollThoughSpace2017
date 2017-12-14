@@ -10,6 +10,11 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject childSpriteMask;
 	public GameObject otherSpriteMask;
 	
+	// public MaskObject childMask;
+	// public MaskObject otherMask;
+	
+	public MaskManager maskManager;
+	
 	public GameObject midWallDeathGO;
 	public ParticleSystem shrinkGO;
 	public ParticleSystem wallDeathGO;
@@ -20,6 +25,11 @@ public class PlayerControl : MonoBehaviour {
 	private Vector2 startingScale;
 	
 	//T
+	
+	private Collider2D playerCol;
+	
+	// private Transform touchedNib; // the nib that is currently colliding with player
+	private Transform lastTouchedNib; // the nib that last collided with the player
 	
 	// private float maxSize = 4;
 	
@@ -34,6 +44,8 @@ public class PlayerControl : MonoBehaviour {
 	void Start () {
 		Disable();
 		startingScale = transform.localScale;
+		
+		playerCol = GetComponent<Collider2D>();
 	}
 	
 	// Update is called once per frame
@@ -109,6 +121,10 @@ public class PlayerControl : MonoBehaviour {
 		{
 			// otherSpriteMask.SetActive(false);
 			// childSpriteMask.SetActive(false);
+			
+			// MaskNib(other.transform);
+			MaskNib();
+			
 			Debug.Log("Wall Death");
 			
 			var sh = wallDeathGO.shape;
@@ -126,13 +142,18 @@ public class PlayerControl : MonoBehaviour {
 			
 			Dead();
 		}
+		
+		if (other.gameObject.tag == "WallMiddle")
+		{
+			lastTouchedNib = other.transform;
+		}
 	}
 	
 	void OnTriggerStay2D (Collider2D other) {
 		
 		if (other.gameObject.tag == "WallMiddle")
 		{
-			if (transform.localScale.y < other.gameObject.transform.localScale.y)
+			if (transform.localScale.y < other.gameObject.transform.localScale.y && playerCol.bounds.max.x < other.bounds.max.x)
 			{
 				// Debug.Break();
 				
@@ -158,7 +179,7 @@ public class PlayerControl : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D other) {
 		if (other.gameObject.tag == "WallMiddle")
 		{
-			if (transform.localScale.y > other.gameObject.transform.localScale.y)
+			if (transform.localScale.y > other.gameObject.transform.localScale.y && playerCol.bounds.min.x > other.bounds.max.x)
 			{
 				if (isDead == false)
 				{
@@ -169,6 +190,26 @@ public class PlayerControl : MonoBehaviour {
 			
 			touchingNib = false;
 		}
+		
+		// if (other.gameObject.tag == "WallMiddle")
+		// {
+			// touchedNib = null;
+		// }
+	}
+	
+	void MaskNib () {
+		
+		// if (touchedNib != null)
+		// {
+			// otherSpriteMask.transform.SetParent(touchedNib);
+			// childSpriteMask.transform.SetParent(touchedNib);
+			
+			// otherMask.Follow(touchedNib);
+			// childMask.Follow(touchedNib);
+			
+			maskManager.Follow(lastTouchedNib);
+			// GameObject.Find("Managers").GetComponent<MaskManager>().Follow(lastTouchedNib);
+		// }
 	}
 	
 	void Dead () {
@@ -196,7 +237,7 @@ public class PlayerControl : MonoBehaviour {
 	void Disable () {
 		gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		gameObject.GetComponentsInChildren<Collider2D>()[0].enabled = false;
-		gameObject.GetComponentsInChildren<Collider2D>()[1].enabled = false;
+		// gameObject.GetComponentsInChildren<Collider2D>()[1].enabled = false;
 		
 		isDead = true;
 	}
@@ -204,7 +245,7 @@ public class PlayerControl : MonoBehaviour {
 	void Enable () {
 		gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		gameObject.GetComponentsInChildren<Collider2D>()[0].enabled = true;
-		gameObject.GetComponentsInChildren<Collider2D>()[1].enabled = true;
+		// gameObject.GetComponentsInChildren<Collider2D>()[1].enabled = true;
 		
 		isDead = false;
 		
