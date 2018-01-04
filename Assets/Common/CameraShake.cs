@@ -14,13 +14,13 @@ public class CameraShake : MonoBehaviour {
 	private bool shaking;
 	
 	void Awake () {
-		Messenger<float>.AddListener("screenshake", Shake);
+		Messenger<float>.AddListener("Screenshake", Shake);
 		
 		camStartPos = Camera.main.transform.position;
 	}
 	
 	void OnDestroy () {
-		Messenger<float>.RemoveListener("screenshake", Shake);
+		Messenger<float>.RemoveListener("Screenshake", Shake);
 	}
 	
 	void Start () {

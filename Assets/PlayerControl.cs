@@ -104,6 +104,7 @@ public class PlayerControl : MonoBehaviour {
 				if (touchingNib == true)
 				{
 					nibCrumbs.Play();
+					// Messenger<float>.Broadcast("Screenshake", transform.localScale.x / 10);
 				}
 			}
 			
@@ -242,6 +243,7 @@ public class PlayerControl : MonoBehaviour {
 			Disable();
 			
 			Messenger.Broadcast("GameOver");
+			// Messenger<float>.Broadcast("Screenshake", transform.localScale.x / 5);
 			
 			// Debug.Break();
 		}
