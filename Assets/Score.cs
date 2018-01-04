@@ -17,6 +17,7 @@ public class Score : MonoBehaviour {
 	
 	void ScoreUp () {
 		currentScore++;
+		// Debug.Log(currentScore);
 	}
 	
 	void GameOver () {

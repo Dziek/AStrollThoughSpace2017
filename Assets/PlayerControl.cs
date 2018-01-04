@@ -190,7 +190,8 @@ public class PlayerControl : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D other) {
 		if (other.gameObject.tag == "WallMiddle")
 		{
-			if (transform.localScale.y > other.gameObject.transform.localScale.y && playerCol.bounds.min.x > other.bounds.max.x)
+			// if (transform.localScale.y > other.gameObject.transform.localScale.y && playerCol.bounds.min.x > other.bounds.max.x)
+			if (playerCol.bounds.min.x > other.bounds.max.x)
 			{
 				if (isDead == false)
 				{
