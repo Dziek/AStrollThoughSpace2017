@@ -16,7 +16,7 @@ public class StoryManager : MonoBehaviour {
 	
 	private bool hasPosted;
 	
-	private int track = 5;
+	private int letterCountdown = 5;
 	
 	// private string[,] story = new string[15,15]();
 	
@@ -108,9 +108,9 @@ public class StoryManager : MonoBehaviour {
 		
 		if (hasPosted == true)
 		{
-			track--;
+			letterCountdown--;
 			
-			if (track == 0)
+			if (letterCountdown == 0)
 			{
 				newText = "You Are Approached By A Strange Man, He Thanks You For Delivering The Letter. The END.";
 			}
