@@ -37,7 +37,7 @@ public class GalaxyParticleSystem : MonoBehaviour {
 		var main = starSystem.main;
         main.simulationSpeed /= starVelocityMultiplier;
 		
-		Debug.Log("SLOOOOOOOOOOOOOWWWWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER");
+		// Debug.Log("SLOOOOOOOOOOOOOWWWWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER");
 	}
 	
 	void OnEnable () {

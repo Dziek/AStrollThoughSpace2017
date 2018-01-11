@@ -34,12 +34,14 @@ public class Score : MonoBehaviour {
 	
 	void OnEnable () {
 		Messenger.AddListener("GameStart", GameStart);
+		Messenger.AddListener("GameStartTesting", GameStart);
 		Messenger.AddListener("ScoreUp", ScoreUp);
 		Messenger.AddListener("GameOver", GameOver);
 	}
 	
 	void OnDisable () {
 		Messenger.RemoveListener("GameStart", GameStart);
+		Messenger.RemoveListener("GameStartTesting", GameStart);
 		Messenger.RemoveListener("ScoreUp", ScoreUp);
 		Messenger.RemoveListener("GameOver", GameOver);
 	}

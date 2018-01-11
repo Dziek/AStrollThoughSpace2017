@@ -70,6 +70,8 @@ public class StoryScript : MonoBehaviour {
 		int x = (int)newLocation.x;
 		int y = (int)newLocation.y;
 		
+		// Debug.Log(newLocation);
+		
 		// Get string
 		scriptString = script[x, y];
 		

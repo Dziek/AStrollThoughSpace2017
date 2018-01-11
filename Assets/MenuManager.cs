@@ -32,12 +32,14 @@ public class MenuManager : MonoBehaviour {
 	
 	void OnEnable () {
 		Messenger.AddListener("GameStart", ClearMenu);
+		Messenger.AddListener("GameStartTesting", ClearMenu);
 		Messenger.AddListener("LimboOver", LoadGameOverMenu);
 		// Messenger.AddListener("GameOver", LoadGameOverMenu);
 	}
 	
 	void OnDisable () {
 		Messenger.RemoveListener("GameStart", ClearMenu);
+		Messenger.RemoveListener("GameStartTesting", ClearMenu);
 		Messenger.RemoveListener("LimboOver", LoadGameOverMenu);
 		// Messenger.RemoveListener("GameOver", LoadGameOverMenu);
 	}
